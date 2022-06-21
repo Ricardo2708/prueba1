@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construmas - El Salvador</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script> 
+
+    <link rel="shortcut icon" href="{% static '/img/c.png'%}" />
+
+    <!-- Para Que Se Actualice SASS se debe recargar desde la terminal Con: npm run sass-->
+</head>
+<body id="inicio">
+  <div id="contenedor_carga">
+    <div id="carga"></div>
+  </div>
+    <header  class="header">
+        <div  class="contenedor contenido-header">
+            <img src="{% static 'img/logo-1.webp'%}" alt="icono">
+
+            <div class="toggle-btn" onclick="hamburger();">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="navegacion-principal" id="nav">
+                <a href="{% url 'index' %}" class="wow animate__flipInX" data-wow-delay="3s">Inicio</a>
+                <a href="{% url 'seccion' %}" class="wow animate__flipInX" data-wow-delay="3s">Panel General</a>
+                <a href="#" class="wow animate__flipInX" data-wow-delay="3s">Ajustes</a>
+                <a href="{% url 'logout' %}" class="wow animate__flipInX" data-wow-delay="3s">Cerrar Sesion</a>
+            </nav>
+            
+            <nav class="menu-social">
+              <a href="http://facebook.com" class="wow animate__bounceIn" data-wow-delay="0.1s">
+                <img class="icons-redes v1" src="../../static/img/redes/facebook.png" alt="facebook">
+              </a>
+              <a href="http://twitter.com" class="wow animate__bounceIn" data-wow-delay="0.2s">
+                <img class="icons-redes" src="../../static/img/redes/twitter.png" alt="facebook">
+              </a>
+              <a href="http://instagram.com" class="wow animate__bounceIn" data-wow-delay="0.3s">
+                <img class="icons-redes" src="../../static/img/redes/instagram.png" alt="facebook">
+              </a>
+              <a href="http://youtube.com" class="wow animate__bounceIn" data-wow-delay="0.4s">
+                <img class="icons-redes v1" src="../../static/img/redes/youtube.png" alt="facebook">
+              </a>
+            </nav>
+        </div>
+        
+    </header>
+    
+    
+    
+
+    {% block content %}
+
+        
+    {% endblock content %}
+    <section class="contenedor sobre-festival">
+        <div class="imagen imagen-sn">
+            <picture>
+                <source srcset="{% static '/img/portada.avif'%}" type="image/avif">
+                <source srcset="{% static '/img/portada.webp'%}" type="image/webp">
+                <img loading="lazy" src="{% static '/img/portada.png'%}" alt="imagen-redes">
+            </picture>
+            
+            
+        </div>
+        <div class="contenido-festival">
+            <div class="chat-content">
+                <h2 class="linea-anuncios">Anuncios</h2>
+                <p class="fecha">Control De Proyectos</p>
+                <p>Podas Encontrar Publicaciones Aviso Y Importantes De Tus Administradores</p>
+                <a href=" {% url 'chat' %}" class="enviar editar editar2 editar3 " >Entrar</a>
+                
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacto" class="contacto lineup2">
+      <h3>Centro De Ayuda</h3> <br></br>
+
+        
+        <div class="contenedor contenedor-contacto">
+    
+            <div class="imagen-mv im-contacto">
+                <picture class="newgif">
+                    <img loading="lazy" src="{% static 'img/soporte.gif'%}" alt="imagen-redes">
+                </picture>
+                
+            </div>
+    
+            <div class="contenido-festival">
+                <h2>Contacto</h2>
+                <p>Email : info@construmas.com.sv</p>
+                <p>De Lunes A Viernes De: 8:00am A 5:00pm</p>
+                <p>Y Sabados De: 8:00am A 12:00pm</p>
+                
+            
+                <div class="social">
+                    <a class="facebook" href="#">
+                        <picture>
+                            <source srcset="{% static '/img/Face.avif'%}" type="image/avif">
+                            <source srcset="{% static '/img/Face.webp'%}" type="image/webp">
+                            <img loading="lazy" src="{% static '/img/Face.png'%}" alt="imagen-redes">
+                        </picture>
+                    </a>
+                    <a class="email" href="#">
+                        <picture>
+                            <source srcset="{% static '/img/Gmail.avif'%}" type="image/avif">
+                            <source srcset="{% static '/img/Gmail.webp'%}" type="image/webp">
+                            <img loading="lazy" src="{% static '/img/Gmail.png'%}" alt="imagen-redes">
+                        </picture>
+                    </a>
+                    <a class="telefono" href="#">
+                        <picture>
+                            <source srcset="{% static '/img/Phone.avif'%}" type="image/avif">
+                            <source srcset="{% static '/img/Phone.webp'%}" type="image/webp">
+                            <img loading="lazy" src="{% static '/img/Phone.png'%}" alt="imagen-redes">
+                        </picture>
+    
+                    </a>
+    
+                </div>
+                
+            </div>
+    
+        </div>
+    
+    </section>
+
+    <footer class="footer">
+        <div class="footer__addr">
+          <h1 class="footer__logo">Control De Proyectos</h1>
+              
+          <h2>Direccion</h2>
+          
+          <address>
+            km 49 1/2 Carretera Antigua A Nejapa<br>
+            Planta Construmas<br>
+            San Salvador, El Salvador
+          </address>
+        </div>
+        
+        <ul class="footer__nav">
+          <li class="nav__item">
+            <h2 class="nav__title">Navegadores Soportados</h2>
+      
+            <ul class="nav__ul">
+              <li>
+                <a href="#">Chrome - Version 57 ></a>
+              </li>
+      
+              <li>
+                <a href="#">Edge - Version 16 ></a>
+              </li>
+                  
+              <li>
+                <a href="#"> Firefox - Version 52 ></a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav__item ">
+            <h2 class="nav__title">Redes Sociales</h2>
+            
+            <ul class="nav__ul ">
+              <li>
+                <a href="#">Facebook</a>
+              </li>
+              
+              <li>
+                <a href="#">Whatsapp</a>
+              </li>
+              
+              <li>
+                <a href="#">Correo Electronico</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav__item">
+            <h2 class="nav__title">Centro De Ayuda</h2>
+            
+            <ul class="nav__ul">
+              <li>
+                <a href="#">Pagina Web</a>
+              </li>
+              
+              <li>
+                <a href="#">Telefono</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        
+        <div class="legal">
+          <p>&copy; Construmas. Todos Los Derechos Reservados.</p>
+          
+          <div class="legal__links">
+            <span>Construmas <span class="heart"></span> S.A De C.V </span>
+          </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="{% static 'js/alerts.js'%}"></script>
+    <script src="{% static 'js/hamburger.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+
+    <script>
+
+        new WOW().init();
+        
+    </script>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script src="{% static 'js/push.min.js'%}"></script>
+                
+            <div>
+                <script type="text/javascript">
+                    Push.create("Construmas", {
+                        body: "{{message}}",
+                        icon: '{% static 'img/notification.png'%}',
+                        timeout: 50000,
+                        onClick: function () {
+                            window.focus();
+                            this.close();
+                        }
+                    });
+                </script>
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+<script>
+  window.onload = function(){
+    var contenedor = document.getElementById('contenedor_carga');
+
+    contenedor.style.visibility = 'hidden';
+    contenedor.style.opacity = '0';
+  }
+</script>
+
+
+</body>
+</html>

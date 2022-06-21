@@ -1,0 +1,33 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Anuncios</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+    <div class="container">
+        <div class="content-card">
+          {% for anuncios in anuncio %}
+            <div class="card card-orange wow animate__bounceIn">
+                <h3>{{anuncios.1|safe}}</h3>
+                <p>{{anuncios.2|safe}}</p>
+                <div class="pad-top"><a href="#" class="button">Publicado Por: {{anuncios.0|safe}}</a></div>
+            </div>
+          {% endfor %}
+    </div>
+    
+
+</section>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

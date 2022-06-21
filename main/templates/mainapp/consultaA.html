@@ -1,0 +1,147 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<section class="lineup  lineup2">
+    <h3>Consultas</h3>
+    <div class="respuestasql">
+        {% for casa in global_casa %}
+        <div class="forsql">
+            <div>
+                <h1>Resultado</h1>
+            </div>
+            <div class="bloque">
+                <div class="descripcion">
+                    <div>
+                        <h2> <span>Proyecto Al Que Pertenece:</span> {{casa.13}}</h2>
+                    </div>
+                    <div>
+                        <h2> <span>Modelo:</span> {{casa.1}}</h2>
+                    </div>
+
+                    <div>
+                        <h2> <span>Poligono:</span> {{casa.2}}</h2>
+                    </div>
+                    <div>
+                        <h2> <span>Numero De Casa:</span> {{casa.3}}</h2>
+                    </div>
+                    
+                    <div>
+                        <h2> <span>Contratista:</span> {{casa.9}}</h2>
+                    </div>
+                    <div>
+                        <h2> <span>Codigo De Obra:</span> {{casa.4}}</h2>
+                    </div>
+                    <div>
+                        <h2> <span>Agrupacion:</span> {{casa.5}} <hr>Precio: $ {{casa.12}} <br> SubTotal: $ {{casa.12}} <br> Unidad De Medida: SG </h2>
+                    </div>
+                    <div>
+                        <h2> <br> <span>Porcentaje:</span> {{casa.6}}</h2>
+                    </div>
+                    <div>
+                        <h2> <br> <span>Comentarios:</span> <hr> {{casa.17}}</h2>
+                    </div>
+                    <div>
+                        <h2> <br> <span>Fecha De Creacion:</span> {{casa.7}}  <hr>Creado Por: {{casa.15}} </h2>
+                    </div>
+                    <div>
+                        <h2> <span>Fecha De Modificacion El:</span> {{casa.8}}  <hr>Modificado Por: {{casa.16}}</h2>
+                    </div>
+                </div>
+                <img class="logo logo-respuesta" src="{% static 'img/modelo2.jpg'%}" alt="">
+                
+            </div>
+            <section class="step-wizard">
+                <ul class="step-wizard-list">
+                    <li class="step-wizard-item paso1">
+                        <span class="progress-count">1</span>
+                        <span class="progress-label">Inicio</span>
+                    </li>
+                    <li class="step-wizard-item paso2">
+                        <span class="progress-count">2</span>
+                        <span class="progress-label">Proceso</span>
+                    </li>
+                    <li class="step-wizard-item paso3">
+                        <span class="progress-count">3</span>
+                        <span class="progress-label">Revisión</span>
+                    </li>
+                    <li class="step-wizard-item paso4">
+                        <span class="progress-count">4</span>
+                        <span class="progress-label">Aprobada</span>
+                    </li>
+                </ul>
+
+            </section>
+            <div class="botonsql">
+                <a href="{% url 'modificar' %}" class="enviar editar editar2">Editar (Restringido)</a>
+                <a href="#" class="enviar eliminar null">Borrar (Administrador)</a>
+            </div>
+
+        </div>
+        
+        {% endfor %}
+        
+    </div>
+
+    
+</section>
+
+
+{% for casa in global_casa %}
+
+    {% if casa.11 == 1 %}
+        <script>
+            var elemento = document.querySelectorAll(".paso1");
+            for (var i = 0; i < elemento.length; i++) {
+                elemento[i].classList.add("current-item");
+            }
+        </script>
+
+    {% elif casa.11 == 2 %}
+        <script>
+            var elemento = document.querySelectorAll(".paso2");
+            for (var i = 0; i < elemento.length; i++) {
+                elemento[i].classList.add("current-item");
+            }
+        </script>
+
+    {% elif casa.11 == 3 %}
+        <script>
+            var elemento = document.querySelectorAll(".paso3");
+            for (var i = 0; i < elemento.length; i++) {
+                elemento[i].classList.add("current-item");
+            }
+        </script>
+    
+    {% elif casa.11 == 4 %}
+        <script>
+            var elemento = document.querySelectorAll(".paso4");
+            for (var i = 0; i < elemento.length; i++) {
+                elemento[i].classList.add("current-item");
+            }
+        </script>
+
+    {% endif %}
+    
+
+{% endfor %}
+
+<script>
+var botoneditar = document.querySelector(".null")
+botoneditar.addEventListener("click", function(event){
+    //* preventDefault no recarga la pagina
+    event.preventDefault();
+    swal('Error','Necesitas Permisos De Administrador ',{
+        icon:"error"
+    });
+});
+</script>
+    
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,126 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Crear Casa</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+
+    
+
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="casa">
+            <div class="usuario">
+                <label for="proyecto">Selecciona El Proyecto:</label><br>
+                <select class="select-contratista" name="proyecto">
+                    <option>Proyecto</option>
+                    {% for proyecto in proyectos %}
+                        <option>{{proyecto.1}} - Estado: 
+                            {% if proyecto.2 == True %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                            
+                        </option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+
+            <div class="usuario">
+                <label for="poligono">Ingrese El Poligono:</label><br>
+                <input class="formulario2" type="text" name="poligono">
+            </div>
+
+            
+
+            <div class="usuario">
+                <label for="casa">Ingrese El Numero De Casa:</label><br>
+                <input class="formulario2" type="number" name="casa">
+            </div>
+
+
+
+            <div class="usuario selector-Pol ">
+                <label>Selecciona El Modelo: </label><br>
+                <select class="select-contratista" name="modelo">
+                    <option>Modelo</option>
+                    {% for casa_precios in casa_precio %}
+                        <option>{{casa_precios.0}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            
+            <div class="usuario selector-Pol">
+                <label for="contratista">Selecciona El Contratista:</label><br>
+                <select class="select-contratista" name="contratista">
+                    <option>Contratista</option>
+                    {% for contratistas in contratista %}
+                        <option>{{contratistas.1}} - Estado: 
+                            {% if contratistas.2 == True %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                            
+                        </option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+
+            
+            <div class="usuario">
+                <label for="codigoobra">Ingresa El Codigo De Obra:</label><br>
+                <input class="formulario2" type="text" name="codigoobra">
+            </div>
+            <div class="usuario selector-Pol">
+                <label>Selecciona La Agrupacion: </label><br>
+                <select class="select-contratista" name="agrupacion">
+                    <option>AGRUPACION No°24</option>
+                    <option>AGRUPACION No°25</option>
+                    <option>AGRUPACION No°26</option>
+                </select>
+            </div>
+            <div class="usuario selector-Pol ">
+                <label>Selecciona El Porcentaje: </label><br>
+                <select class="select-contratista" name="porcentaje">
+                    <option>0</option>
+                    <option>0.5</option>
+                    <option>1.0</option>
+                </select>
+            </div>
+
+            
+            
+        </div>
+        <div class="recordatorio">
+            <p class="texto"> <span>Mensaje: </span>Agrega Una Casa Al Sistema De Control De Proyectos</p>
+        </div>
+
+        <div class="botoncasa">
+            <input class="enviar .alert-sucess" type="submit" value="Enviar"/>
+        </div>
+        
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

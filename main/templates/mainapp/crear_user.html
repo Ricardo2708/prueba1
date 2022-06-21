@@ -1,0 +1,167 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construmas - El Salvador</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" >
+
+    <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script> 
+
+    <link rel="shortcut icon" href="{% static '/img/c.png'%}" />
+
+    <!-- Para Que Se Actualice SASS se debe recargar desde la terminal Con: npm run sass-->
+</head>
+<body>
+  <div id="contenedor_carga">
+    <div id="carga"></div>
+  </div>
+  <section id="lineup" class="lineup">
+      <h3>Crear Usuario</h3>
+
+      <p class="dia">Control De Proyectos</p>
+      <div class="contenedor contenedor1 formulario">
+          <div class="informacion">
+              <form method="POST">
+                  <div class="marco">
+                  {% csrf_token %}
+                  {{form.as_p}}
+                  </div><br>
+                  <input class="enviar " type="submit" value="Crear Cuenta">
+              </form> 
+          </div>
+          <!--? End Producto 2 -->
+          
+      </div>
+      <div class="recordatorio">
+        <p class="texto"> <span>Control De Proyectos - Construmas</span> 
+          <p class="texto">Te Recomendamos Que Guardes Tu Usuario Y Contraseña En Un Lugar Seguro </p>
+        </p>
+      </div>
+
+  </section>
+  <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="footer__logo">Control De Proyectos</h1>
+            
+        <h2>Direccion</h2>
+        
+        <address>
+          km 49 1/2 Carretera Antigua A Nejapa<br>
+          Planta Construmas<br>
+          San Salvador, El Salvador
+        </address>
+      </div>
+      
+      <ul class="footer__nav">
+        <li class="nav__item">
+          <h2 class="nav__title">Navegadores Soportados</h2>
+    
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Chrome - Version 57 ></a>
+            </li>
+    
+            <li>
+              <a href="#">Edge - Version 16 ></a>
+            </li>
+                
+            <li>
+              <a href="#"> Firefox - Version 52 ></a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav__item ">
+          <h2 class="nav__title">Redes Sociales</h2>
+          
+          <ul class="nav__ul ">
+            <li>
+              <a href="#">Facebook</a>
+            </li>
+            
+            <li>
+              <a href="#">Whatsapp</a>
+            </li>
+            
+            <li>
+              <a href="#">Correo Electronico</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav__item">
+          <h2 class="nav__title">Centro De Ayuda</h2>
+          
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Pagina Web</a>
+            </li>
+            
+            <li>
+              <a href="#">Telefono</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="legal">
+        <p>&copy; Construmas. Todos Los Derechos Reservados.</p>
+        
+        <div class="legal__links">
+          <span>Construmas <span class="heart"></span> S.A De C.V </span>
+        </div>
+      </div>
+  </footer>
+
+  <script>
+    window.onload = function(){
+      var contenedor = document.getElementById('contenedor_carga');
+  
+      contenedor.style.visibility = 'hidden';
+      contenedor.style.opacity = '0';
+    }
+  </script>
+
+
+</body>
+</html>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script src="{% static 'js/push.min.js'%}"></script>
+                <div>
+                    <script type="text/javascript">
+                        Push.create("Construmas", {
+                            body: "{{message}}",
+                            icon: '{% static 'img/notification.png'%}',
+                            timeout: 50000,
+                            onClick: function () {
+                                window.focus();
+                                this.close();
+                            }
+                        });
+                    </script>
+                </div>
+        {% endfor %}
+
+    {% endif %}
+
+
+
+    
+
+
+{% endblock content %}

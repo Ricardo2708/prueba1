@@ -1,0 +1,33 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+<section id="nosotros" class="contenedor datos-title">
+
+    <h3>Noticias Generales</h3>
+
+    <div class="datos">
+        <div class="imagen-mv">
+            <picture>
+                <source srcset="{% static '/img/Mision.avif'%}" type="image/avif">
+                <source srcset="{% static '/img/Mision.webp'%}" type="image/webp">
+                <img loading="lazy" src="{% static '/img/Mision.png'%}" alt="imagen-redes">
+            </picture>
+            
+            
+        </div>
+        <div class="contenido-festival">
+            <h2>Noticias </h2>
+            <p class="fecha">Construmas, San Salvador, El Salvador</p>
+            <p> En Este Momento Nuestra Pagina Se Encuentra 
+                En Desarrollo En Un Breve Tiempo Podras Saber Mas Sobre 
+                Nosotros.
+            </p>
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock content %}

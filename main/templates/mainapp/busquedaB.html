@@ -1,0 +1,83 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Consulta Por Bloque</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+
+    
+
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="casa casa2">
+            <div class="recordatorio">
+                <p class="texto"> <span>Mensaje: </span>Encuentra Una Casa Que Tenga Diferentes Agrupaciones Y Precios</p>
+            </div>
+
+            <div class="usuario selector-Pol selector-Pol2">
+                <label for="proyecto">Selecciona El Proyecto:</label><br>
+                <select class="select-contratista" name="proyecto">
+                    <option>Proyecto</option>
+                    {% for proyecto in proyectos %}
+                        <option>{{proyecto.1}} - Estado: 
+                            {% if proyecto.2 == True %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                            
+                        </option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+
+            <div class="usuario">
+                <label for="poligono">Ingrese El Poligono:</label><br>
+                <input class="formulario2" type="text" name="poligono"><br>
+            </div>
+
+            
+
+            <div class="usuario">
+                <label for="casa">Ingrese El Numero De Casa:</label><br>
+                <input class="formulario2" type="text" name="casa"><br>
+            </div>
+
+
+
+            <div class="usuario selector-Pol selector-Pol2">
+                <label>Selecciona El Modelo: </label><br>
+                <select class="select-contratista" name="modelo">
+                    <option>Modelo</option>
+                    {% for casa_precios in casa_precio %}
+                        <option>{{casa_precios.0}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+        <div class="botoncasa">
+            <input class="enviar .alert-sucess" type="submit" value="Enviar"/>
+        </div>
+        
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

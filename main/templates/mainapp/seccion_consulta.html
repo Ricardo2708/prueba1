@@ -1,0 +1,61 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Panel General</h3>
+
+    <p class="dia">Control De Proyectos</p>
+    <div class="escenarios-contenedor contenedor contenedor1 escenarios-contenedor2  contenedor2">
+        <a href="{% url 'busquedaC' %}">
+            <div class="escenario rock rock2 pegamento bg-amarillo" >
+                <p class="nombre-escenario nombre-escenario2">Consulta Generales</p>
+            </div>
+        </a>
+        <!--? End Producto 1 -->
+        <a href="{% url 'busquedaA' %}">
+            <div class="escenario edm edm2 bg-verde" >
+                <p class="nombre-escenario nombre-escenario2">Consultas Especificas</p>
+            </div>
+        </a>
+        <a href="{% url 'busquedaB' %}">
+            <div class="escenario rock rock2 bg-verde" >
+                <p class="nombre-escenario nombre-escenario2">Consultas Por Bloque</p>
+            </div>
+        </a>
+        <!--? End Producto 2 -->
+        
+    </div>
+
+
+    <div class="botonsql">
+        <a href=" {% url 'crear_casa' %}" class="enviar editar editar2">Añadir Casa</a>
+        <a href="#" class="enviar eliminar eliminar2 null">Añadir Contratista (Administrador)</a>
+    </div>
+
+</section>
+
+
+
+
+
+
+<script>
+    var botoneditar = document.querySelector(".null")
+    botoneditar.addEventListener("click", function(event){
+        //* preventDefault no recarga la pagina
+        event.preventDefault();
+        swal('Error','Necesitas Permisos De Administrador ',{
+            icon:"error"
+        });
+    });
+</script>
+
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Seleccion De Proyectos</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+
+    
+
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="casa casa2 casa4">
+            <div class="usuario">
+                <label for="proyecto">Selecciona El Proyecto:</label><br></br>
+                <select class="select-contratista" name="proyecto">
+                    <option>Proyecto</option>
+                    {% for proyecto in proyectos %}
+                        <option>{{proyecto.1}} - Estado: 
+                            {% if proyecto.2 == True %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                            
+                        </option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+        <div class="botoncasa botoncasa2">
+            <div class="recordatorio"><br>
+                <p class="texto"> <span>Mensaje: </span> Busca Todas Las Casa En General De Un Determinado Proyecto</p>
+            </div>
+            <input class="enviar .alert-sucess" type="submit" value="Enviar"/>
+        </div>
+        
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

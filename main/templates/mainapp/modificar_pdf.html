@@ -1,0 +1,155 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3> Orden De Trabajo</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+
+    
+
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="casa">
+            <div class="usuario">
+                <label for="orden">Ingrese El N° De Orden:</label><br>
+                <input class="formulario2" type="number" name="orden"><br><br>
+            </div>
+
+
+            <div class="usuario selector-Pol ">
+                <label for="proyecto">Selecciona El Proyecto:</label><br>
+                <select class="select-contratista" name="proyecto">
+                    <option>Proyecto</option>
+                    {% for proyecto in proyectos %}
+                        <option>{{proyecto.1}} - Estado: 
+                            {% if proyecto.2 == True %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                            
+                        </option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+            <div class="usuario selector-Pol ">
+                <label for="inmo">Selecciona La Inmobiliaria</label><br>
+                <select class="select-contratista" name="inmo">
+                    <option>Inmobiliaria</option>
+                    {% for  inmobiliarias in inmobiliaria %}
+                        <option>{{inmobiliarias.1}}</option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+            
+            <div class="usuario">
+                <label for="residente">Ingrese El Residente:</label><br>
+                <input class="formulario2" type="text" name="residente"><br><br>
+            </div>
+
+            <div class="usuario selector-Pol">
+                <label for="cancelada">Obra Cancelada:</label><br>
+                <select class="select-contratista" name="cancelada">
+                    <option>SI</option>
+                    <option>NO</option>
+                </select>
+            </div>
+
+            <div class="usuario">
+                <label for="planilla">Ingrese El N° De Planilla:</label><br>
+                <input class="formulario2" type="number" name="planilla"><br><br>
+            </div>
+
+            <div class="usuario">
+                <label for="año">Ingrese El Año:</label><br>
+                <input class="formulario2" type="number" name="año"><br><br>
+            </div>
+
+            <div class="usuario selector-Pol ">
+                <label for="retencion">Retencion Cancelada:</label><br>
+                <select class="select-contratista" name="retencion">
+                    <option>SI</option>
+                    <option>NO</option>
+                </select>
+            </div>
+            <div class="usuario">
+                <label for="fecha1">Ingrese La Fecha Inicio:</label><br>
+                <input class="formulario2" type="date" name="fecha1"><br><br>
+            </div>
+            <div class="usuario">
+                <label for="fecha2">Ingrese La Fecha Final:</label><br>
+                <input class="formulario2" type="date" name="fecha2"><br><br>
+            </div>
+            
+            <div class="usuario selector-Pol ">
+                <label for="empleado">Selecciona El Empleado:</label><br>
+                <select class="select-contratista" name="empleado">
+                    <option>Empleado</option>
+                    <option>{{user}}</option>
+
+                </select>
+            </div>
+            <div class="usuario">
+                <label for="dui">Ingrese Su DUI:</label><br>
+                <input class="formulario2" type="text" name="dui"><br><br>
+            </div>
+
+            
+         
+            
+            
+        </div>
+
+        <div class="usuario botoncheck">
+            <label for="dui">Publicar Documento:</label><br>
+            <div class="caja-check">
+                <input class="enviar2 .alert-sucess" name="subir" type="checkbox" id="btn-switch"/>
+                <label for="btn-switch" class="lbl-switch"></label><br>
+            </div>
+            <p class="sugerencia"> <span>Atencion:</span> El Documento Se Guardara En El Servidor
+            Y No Se Podran Realizar Cambios, Cualquier Informacion Consulte A Sus Administradores
+            </p>
+        </div>
+
+
+
+        <div class="botoncasa">
+            <input class="enviar .alert-sucess" type="submit" value="Enviar"/>
+        </div>
+        
+    </form>
+
+</section>
+
+
+
+<script>
+var botonlineup = document.querySelector(".enviar")
+botonlineup.addEventListener("click", function(event){
+    //* preventDefault no recarga la pagina
+    swal('Se Esta Creando El PDF','Espere Un Momento...',{
+        icon:"success"
+    });
+});
+
+
+var botonlineup = document.querySelector(".enviar2")
+botonlineup.addEventListener("click", function(event){
+    //* preventDefault no recarga la pagina
+    swal('El Documento Sera Publicado','Una Vez Publicado No Se Podra Realizar Cambios',{
+        icon:"warning"
+    });
+});
+</script>
+
+
+
+
+
+{% endblock content %}

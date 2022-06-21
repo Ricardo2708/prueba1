@@ -1,0 +1,63 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="lineup" class="lineup lineup3">
+    <h3>Modificacion De Campos</h3>
+
+    <p class="dia">Control De Proyectos</p>
+
+
+    
+
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="casa casa2 casa4">
+            <div class="usuario selector-Pol ">
+                <label>Selecciona Un Nuevo Porcentaje: </label><br></br>
+                <select name="porcentaje">
+                    <option>0</option>
+                    <option>0.5</option>
+                    <option>1.0</option>
+                </select>
+            </div>
+            <div class="usuario selector-Pol">
+                <label>Selecciona Una Nueva La Agrupacion: </label><br></br>
+                <select name="agrupacion">
+                    <option>AGRUPACION No°24</option>
+                    <option>AGRUPACION No°25</option>
+                    <option>AGRUPACION No°26</option>
+                </select>
+            </div>
+            <div class="usuario selector-Pol ">
+                <label>Selecciona Una Actualizacion Del Progreso: </label><br></br>
+                <select name="progreso">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="botoncasa">
+            <input class="enviar .alert-sucess" type="submit" value="Enviar"/>
+        </div>
+        
+    </form>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
